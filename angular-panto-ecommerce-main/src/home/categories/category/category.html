@@ -1,0 +1,80 @@
+<section aria-label="Category Section">
+  <!-- Banner -->
+  <div
+    class="relative h-[400px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_85%,0_100%)]"
+  >
+    <img
+      src="/shop-bg.jpg"
+      alt="Shop Background"
+      class="size-full object-cover object-center"
+    />
+
+    <h2
+      class="absolute top-1/2 left-1/2 -translate-1/2 text-accent text-shadow-md text-shadow-orange-200 text-7xl md:text-8xl lg:text-9xl font-secondary font-semibold text-center"
+    >
+      {{`${categorySlug?.slice(0, 1)?.toUpperCase()}${categorySlug?.slice(1)}`}}
+    </h2>
+  </div>
+
+  <app-container>
+    <!-- Go Back -->
+    <button
+      class="inline-flex items-center gap-1.5 mt-5 rounded-full px-3 py-1 text-surface bg-accent transition-colors duration-200 hover:bg-accent/90 cursor-pointer"
+      aria-label="Go Back To Home"
+      [routerLink]="['/']"
+    >
+      <span aria-hidden="true"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+          />
+        </svg>
+      </span>
+
+      Go Back To Home
+    </button>
+
+    <!-- Loading State -->
+    @if (isLoading()) {
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-8 lg:gap-12 xl:gap-20 mt-14 md:mt-20"
+    >
+      @for (skeletonCard of skeletonCards; track $index) {
+      <li>
+        <app-skeleton-card />
+      </li>
+      }
+    </ul>
+    }
+
+    <!-- Error State -->
+    @else if (errorState()) {
+    <h3 class="text-center text-red-500">{{errorState()}}</h3>
+    }
+
+    <!-- Featured Products -->
+    @else if (products().length > 0) {
+    <ul class="products-list">
+      @for (product of products(); track product.id) {
+      <li>
+        <app-product-card [product]="product" />
+      </li>
+      }
+    </ul>
+    }
+
+    <!-- No Products -->
+    @else {
+    <p class="text-center py-10">No products found.</p>
+    }
+  </app-container>
+</section>

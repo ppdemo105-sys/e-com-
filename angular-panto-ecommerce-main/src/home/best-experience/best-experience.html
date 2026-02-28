@@ -1,0 +1,57 @@
+<section class="pt-24" aria-label="Best Experience Section">
+  <app-container
+    className="grid grid-cols-1 items-center md:grid-cols-2 md:gap-10 lg:gap-16 xl:gap-20"
+  >
+    <!-- Experience Picture -->
+    <figure class="relative">
+      <img
+        src="/experience-img.png"
+        alt="Experience Image"
+        class="hidden md:block relative size-full object-cover"
+      />
+    </figure>
+
+    <!-- Experience Content -->
+    <div class="flex flex-col gap-1.5">
+      <p class="text-accent text-xl uppercase font-semibold tracking-widest">
+        Experience
+      </p>
+
+      <h3 class="text-3xl lg:text-4xl line-clamp-2 font-semibold">
+        We provide you the best experience
+      </h3>
+
+      <p class="text-muted md:text-lg py-3">
+        You don&apos;t have to worry about the result because all of these
+        interiors are made by people who are professionals in their fields with
+        an elegant and lucurious style and with premium quality materials.
+      </p>
+
+      <button
+        class="inline-flex items-center bg-accent mt-3 px-2 py-1 gap-2 text-surface w-max text-lg transition-colors duration-200 hover:bg-accent/90 group cursor-pointer"
+      >
+        More Info
+
+        <!-- Icon -->
+        <span
+          aria-hidden="true"
+          class="transition-transform duration-200 group-hover:translate-x-1"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </app-container>
+</section>

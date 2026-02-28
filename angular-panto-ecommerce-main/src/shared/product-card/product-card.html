@@ -1,0 +1,100 @@
+<article
+  class="relative flex flex-col bg-surface rounded-2xl min-h-[200px] max-w-[260px] md:max-w-[280px] lg:min-w-[280px] place-self-center drop-shadow-xl drop-shadow-muted/30"
+>
+  <figure class="rounded-t-2xl overflow-hidden group cursor-pointer">
+    <img
+      [src]="product().image_path"
+      [alt]="`${product.name}'s Picture`"
+      [routerLink]="['/shop', product().name || '']"
+      class="size-full object-cover rounded-t-2xl group-hover:scale-105 transition-all duration-200 group-hover:brightness-90 ease-in-out"
+    />
+  </figure>
+
+  <div
+    class="flex flex-col left-0 bottom-0 gap-1.5 w-full bg-bg p-5 rounded-b-2xl"
+  >
+    <div class="flex items-center justify-between">
+      <span class="text-xl text-muted">{{product().category}}</span>
+
+      <!--====== Wishlist ======-->
+      <button
+        class="grid top-2 right-2 place-items-center p-2 cursor-pointer border border-border transition duration-100 hover:bg-border/20"
+        aria-label="Add Product To Wishlist"
+        (click)="toggleWishlist(product())"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="red"
+          [attr.fill]="isFavorite(product()!.id) ? 'red' : 'none'"
+          class="size-6"
+          [ngClass]="isFavorite(product()!.id) ? 'rotate-360 transition-transform duration-500 ease-in-out' : ''"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+          />
+        </svg>
+      </button>
+    </div>
+
+    <h3 class="text-2xl font-medium line-clamp-1">
+      {{product().name || 'Name not available'}}
+    </h3>
+
+    <ul class="flex items-center space-x-1">
+      @for (star of productsStars(5); track $index) {
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="#F6B76F"
+        fill="#F6B76F"
+        class="size-5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+        />
+      </svg>
+      }
+    </ul>
+
+    <div class="flex items-center justify-between pt-3.5 gap-3">
+      <span class="text-xl font-medium">
+        {{product().price || 0 | currency:'INR':'symbol':'1.0-0'}}
+      </span>
+
+      <button
+        class="inline-flex items-center bg-accent gap-1.5 px-3 py-1 text-surface rounded-full transition-colors duration-100 hover:bg-accent/90 cursor-pointer"
+        aria-label="Add To Cart"
+        (click)="addToCart(product())"
+      >
+        Add To Cart
+
+        <!-- Cart Icon -->
+        <span aria-hidden="true">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="white"
+            class="size-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,49 @@
+<nav
+  class="fixed md:hidden top-0 -left-0 w-full z-30 min-h-dvh bg-surface transform transition-all duration-300 ease-in-out"
+  [ngClass]="isMenuOpen() ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0 pointer-events-none'"
+  aria-label="Mobile Menu"
+  [attr.aria-expanded]="isMenuOpen()"
+>
+  <header
+    class="flex items-center justify-between py-3 px-4 border-b border-accent"
+  >
+    <app-logo className="text-accent" />
+
+    <!--====== Close Mobile Menu Button ======-->
+    <button
+      class="grid place-items-center p-2 cursor-pointer border border-accent transition duration-100 hover:bg-border/20"
+      aria-label="Close Mobile Menu"
+      (click)="toggleMobileMenu()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="size-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        />
+      </svg>
+    </button>
+  </header>
+
+  <ul class="flex flex-col space-y-8 pt-20 px-10">
+    @for (link of navLinks; track link.label) {
+    <li class="text-4xl" (click)="toggleMobileMenu()">
+      <a
+        [routerLink]="link.path"
+        routerLinkActive="text-accent"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [attr.aria-current]="link.path === currentPath() ? 'page' : null"
+        class="hover:text-accent transition duration-100"
+        >{{ link.label }}</a
+      >
+    </li>
+    }
+  </ul>
+</nav>

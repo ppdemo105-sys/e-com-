@@ -1,0 +1,27 @@
+<div
+  class="flex flex-wrap items-center justify-center sm:justify-start gap-3 mt-5"
+>
+  <select
+    name="sortBy"
+    id="sort-by"
+    class="appearance-none rounded-full bg-accent text-surface px-2 text-center py-1 md:py-2 w-max outline-0 transition-colors duration-200 hover:bg-accent/90 cursor-pointer"
+    (change)="onChange($event)"
+  >
+    <option value="">Sort by (All)</option>
+    @for (sort of sortFilters; track sort.label) {
+    <option value="{{ sort.value }}">{{ sort.label }}</option>
+    }
+  </select>
+
+  <select
+    name="category"
+    id="sort-by-category"
+    class="appearance-none rounded-full bg-accent text-surface px-2 md:py-2 text-center py-1 w-max outline-0 transition-colors duration-200 hover:bg-accent/90 cursor-pointer"
+    (change)="onChange($event)"
+  >
+    <option value="">Sort by (All Categories)</option>
+    @for (category of sortCategory; track category.label) {
+    <option value="{{ category.value }}">{{ category.label }}</option>
+    }
+  </select>
+</div>

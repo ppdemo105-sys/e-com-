@@ -1,0 +1,26 @@
+<section class="pt-24" aria-label="Testimonials Section">
+  <app-container>
+    <!-- Subtitle & Title -->
+    <div class="flex flex-col items-center text-center">
+      <p class="text-accent text-xl uppercase font-semibold tracking-widest">
+        Testimonials
+      </p>
+
+      <h2 class="text-3xl lg:text-4xl font-secondary font-semibold text-center">
+        Our Client Reviews
+      </h2>
+    </div>
+
+    <ul
+      class="grid items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12 md:mt-16"
+    >
+      @for (testimonial of dummyTestimonials; track testimonial.id) {
+      <img
+        [src]="testimonial.image"
+        [alt]="`${testimonial.name}'s Picture`"
+        class="max-w-[300px] size-full place-self-center"
+      />
+      }
+    </ul>
+  </app-container>
+</section>

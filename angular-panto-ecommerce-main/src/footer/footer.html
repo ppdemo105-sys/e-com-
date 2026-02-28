@@ -1,0 +1,44 @@
+<footer class="left-0 bottom-0 w-full z-50 bg-[#f2f2f2] py-10 mt-20">
+  <app-container className="flex flex-col gap-5 md:gap-10">
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-5">
+      <!-- Logo and Infos -->
+      <div class="flex flex-col gap-2">
+        <app-logo className="font-semibold" />
+
+        <p class="text-muted max-w-sm py-3.5 lg:text-lg">
+          The advantage of hiring a workspace with us is that givees you
+          comfortable service and all-around facilities.
+        </p>
+      </div>
+
+      <ul
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-24 md:gap-28 lg:gap-30"
+      >
+        @for (link of footerLinks; track link.title) {
+        <ul>
+          <li class="font-semibold text-xl text-accent mb-3.5">
+            {{link.title}}
+          </li>
+          @for (subLink of link.links; track subLink.title) {
+          <li class="mb-2.5 sm:text-lg hover:underline">
+            <a [routerLink]="subLink.link">{{subLink.title}}</a>
+          </li>
+          }
+        </ul>
+        }
+      </ul>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div
+      class="flex flex-col sm:flex-row text-muted gap-2 items-center sm:justify-between pt-5 md:text-lg"
+    >
+      <p>&copy; {{currentYear}} Panto. All rights reserved.</p>
+
+      <ul class="flex items-center justify-between gap-5">
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </app-container>
+</footer>

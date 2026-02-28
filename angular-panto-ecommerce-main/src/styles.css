@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-bg: oklch(100% 0 0);
+  --color-text: oklch(30% 0 0);
+  --color-border: oklch(80% 0 0);
+  --color-surface: oklch(95% 0 0);
+  --color-muted: oklch(50% 0 0);
+  --color-accent: oklch(70% 0.15 40);
+
+  /* Fonts */
+  --font-primary: "Fira Sans", sans-serif;
+  --font-secondary: "Lobster Two", sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  font-family: var(--font-primary);
+  color: var(--color-text);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p-toast {
+  max-width: 90vw;
+  word-break: break-word;
+  z-index: 9999;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-accent rounded-xs;
+}
+
+@layer utilities {
+  .top-category-list {
+    @apply flex items-center gap-2.5 md:gap-4 bg-zinc-200 p-2 rounded-full mt-5 md:mt-8 place-self-center;
+  }
+
+  .products-list {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center gap-8 lg:gap-12 xl:gap-20 mt-14 md:mt-20;
+  }
+
+  .major-category-bentocard {
+    @apply relative size-full overflow-hidden rounded-lg first:col-span-6 md:first:col-span-4 md:first:row-span-2 nth-[2]:col-span-6 md:nth-[2]:col-span-4 md:nth-[2]:row-span-2 nth-[3]:col-span-6 nth-[3]:row-span-2 md:nth-[3]:col-span-2 md:nth-[3]:row-span-2 nth-[4]:col-span-6 nth-[4]:row-span-2 md:nth-[4]:col-span-2 md:nth-[4]:row-span-2 nth-[5]:col-span-12 md:nth-[5]:col-span-4 nth-[6]:col-span-12 md:nth-[6]:col-span-4 nth-[7]:col-span-6 md:nth-[7]:col-span-2 nth-[8]:col-span-6 md:nth-[8]:col-span-2 nth-[9]:col-span-12 md:nth-[9]:col-span-4 nth-[10]:col-span-12 md:nth-[10]:col-span-4 nth-[11]:col-span-6 md:nth-[11]:col-span-2 nth-[12]:col-span-6 md:nth-[12]:col-span-2 cursor-pointer;
+  }
+}

@@ -1,0 +1,28 @@
+<section aria-label="Wishlist Section">
+  <!-- Banner -->
+  <div
+    class="relative h-[400px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_85%,0_100%)]"
+  >
+    <img
+      src="/shop-bg.jpg"
+      alt="Shop Background"
+      class="size-full object-cover object-center"
+    />
+
+    <h2
+      class="absolute top-1/2 left-1/2 -translate-1/2 text-accent text-shadow-md text-shadow-orange-200 text-7xl md:text-8xl lg:text-9xl font-secondary font-semibold text-center"
+    >
+      Wishlist
+    </h2>
+  </div>
+
+  <app-container>
+    <ul class="products-list">
+      @for (product of wishlistProducts(); track product.id) {
+      <li>
+        <app-product-card [product]="product" />
+      </li>
+      }
+    </ul>
+  </app-container>
+</section>
